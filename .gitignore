@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+credentials.json
+token.json
+
+# ChromaDB
+chroma_db/
+
+# Ollama model files
+*.gguf
+
+_/

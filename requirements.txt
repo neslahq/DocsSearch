@@ -1,0 +1,11 @@
+langchain==0.0.184
+langchain-ollama==0.1.0rc0
+chromadb==0.3.21
+google-auth==2.16.2
+google-auth-oauthlib==0.8.0
+google-auth-httplib2==0.1.0
+google-api-python-client==2.70.0
+streamlit==1.18.1
+python-dotenv==0.21.1
+altair==4.2.2
+langchain-community==0.2.9
