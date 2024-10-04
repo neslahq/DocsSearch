@@ -1,32 +1,23 @@
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain_chroma import Chroma
+# from langchain_huggingface import HuggingFaceEmbeddings
 
-def generate_response(query, relevant_chunks, llm):
+def generate_response(query, relevant_chunks, llm, retriever):
     # Create a Chroma vector store from the relevant chunks
-    embeddings = HuggingFaceEmbeddings()
+    # embeddings = HuggingFaceEmbeddings()
     
-    # # Adjust this part based on the actual structure of relevant_chunks
-    # documents = relevant_chunks['documents'] if isinstance(relevant_chunks, dict) else relevant_chunks
-
-    documents = [chunk['document'] for chunk in relevant_chunks]
-    metadatas = [chunk['metadata'] for chunk in relevant_chunks]
+    # documents = [chunk['document'] for chunk in relevant_chunks]
+    # metadatas = [chunk['metadata'] for chunk in relevant_chunks]
     
-    print(documents)
-    print(type(documents))
-
-    # documents = []
-
-    vectorstore = Chroma.from_texts(
-        documents,
-        embeddings,
-        metadatas=metadatas
-        # metadatas=[{"source": f"chunk_{i}"} for i in range(len(documents))]
-    )
+    # vectorstore = Chroma.from_texts(
+    #     documents,
+    #     embeddings,
+    #     metadatas=metadatas
+    # )
     
-    # Create a retriever
-    retriever = vectorstore.as_retriever()
+    # # Create a retriever
+    # retriever = vectorstore.as_retriever()
     
     # Create a prompt template
     template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
@@ -53,4 +44,13 @@ def generate_response(query, relevant_chunks, llm):
     # Generate the response
     response = qa_chain({"query": query})
     
-    return response['result'], response['source_documents']
+    # Remove duplicate sources
+    unique_sources = []
+    seen_doc_ids = set()
+    for doc in response['source_documents']:
+        doc_id = doc.metadata['doc_id']
+        if doc_id not in seen_doc_ids:
+            unique_sources.append(doc)
+            seen_doc_ids.add(doc_id)
+    
+    return response['result'], unique_sources

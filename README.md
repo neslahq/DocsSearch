@@ -1,6 +1,6 @@
-# Google Docs RAG Search
+# DocsSearch
 
-This open-source Python software allows users to search across their Google Docs files and get LLM-generated responses using a RAG (Retrieval-Augmented Generation) architecture.
+This open-source Python software allows users to search across their Google Docs files and get LLM-generated responses using a RAG (Retrieval-Augmented Generation) architecture. For privacy reasons, this was originally designed to be used with a local LLM model like Llama, but can also be configured to work with models from non-local providers such as OpenAI, Anthropic, or Google, providing flexibility in deployment options.
 
 ## Features
 
@@ -58,7 +58,7 @@ google_docs_rag/
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/google-docs-rag-search.git
+   git clone https://github.com/phvash/google-docs-rag-search.git
    cd google-docs-rag-search
    ```
 
@@ -104,6 +104,8 @@ google_docs_rag/
 4. Enter your query in the search box and get LLM-generated responses
 
 5. Configure the LLM model using the sidebar options
+
+![preview.png](preview.png)
 
 ## Contributing
 

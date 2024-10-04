@@ -1,4 +1,4 @@
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from config import DEFAULT_LLM, OLLAMA_BASE_URL
 
 def get_llm(model_name=DEFAULT_LLM):
