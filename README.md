@@ -58,8 +58,8 @@ google_docs_rag/
 
 1. Clone the repository:
    ```
-   git clone https://github.com/phvash/google-docs-rag-search.git
-   cd google-docs-rag-search
+   git clone https://github.com/neslahq/DocsSearch.git
+   cd DocsSearch
    ```
 
 2. Create a virtual environment and activate it:
